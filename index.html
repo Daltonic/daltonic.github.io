@@ -923,51 +923,7 @@
                   ></iframe>
                 </div>
               </div>
-            </div>
-            <div 
-                class="col-sm-12 col-md-12 wow fadeInUp mx-auto my-5 pt-3"
-                data-wow-duration="0.8s"
-                data-wow-delay="0.5s">
-                <h3 class="text-center">Login</h3>
-                <form
-                  id="login-form"
-                  class="single-form quate-form wow fadeInUp"
-                  data-toggle="validator"
-                >
-                  <div id="msgSubmit" class="h3 text-center hidden"></div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <input
-                        name="email"
-                        class="contact-subject form-control"
-                        id="auth-email"
-                        type="email"
-                        placeholder="Your Email"
-                        required
-                      />
-                    </div>
-                    <div class="col-sm-12">
-                      <input
-                        name="password"
-                        class="contact-subject form-control"
-                        id="auth-password"
-                        type="password"
-                        placeholder="Your Password"
-                        required
-                      />
-                    </div>
-                    <div class="btn-form col-sm-12">
-                      <button
-                        type="submit"
-                        class="btn btn-fill btn-block"
-                        id="form-login"
-                      >
-                        Login
-                      </button>
-                    </div>
-                  </div>
-                </form>
-            </div>            
+            </div>           
             <div
               class="col-sm-12 mh-copyright wow fadeInUp"
               data-wow-duration="0.8s"
@@ -978,11 +934,7 @@
                   <div class="text-left text-xs-center">
                     <p>
                       <a href="templateshub.net"
-                        >With Love ❤️ &copy;
-                        <script type="text/javascript">
-                          document.write(new Date().getFullYear().toString())
-                        </script>
-                      </a>
+                        >With Love ❤️ &copy; 2016 - <span id="year"></span></a>
                     </p>
                   </div>
                 </div>
@@ -1023,117 +975,6 @@
       </div>
     </footer>
 
-    <section class="mh-footer" id="mh-dashboard">
-        <div class="map-image image-bg">
-          <div class="container">
-            <div class="row section-separator">
-              <div
-                class="col-sm-12 section-title wow fadeInUp"
-                data-wow-duration="0.8s"
-                data-wow-delay="0.2s"
-              >
-                <h3>Dashboard</h3>
-                <button class="btn btn-link p-0 m-0" id="btn-logout">Logout</button>
-              </div>
-              <div
-                class="col-sm-12 col-md-12 wow fadeInUp"
-                data-wow-duration="0.8s"
-                data-wow-delay="0.3s"
-              >
-                <form
-                  id="portfolio-form"
-                  class="single-form quate-form wow fadeInUp"
-                  data-toggle="validator"
-                >
-                  <div id="msgSubmit" class="h3 text-center hidden"></div>
-                  <div class="row mx-auto">
-                    <div class="col-md-12">
-                      <input
-                        name="type"
-                        class="contact-subject form-control"
-                        id="type"
-                        type="text"
-                        placeholder="Portfolio Type"
-                        required
-                      />
-                    </div>
-                    <div class="col-md-12">
-                        <input
-                          name="category"
-                          class="contact-subject form-control"
-                          id="category"
-                          type="text"
-                          placeholder="Portfolio Category"
-                          required
-                        />
-                    </div>
-                    <div class="col-md-12">
-                        <input
-                          name="title"
-                          class="contact-subject form-control"
-                          id="title"
-                          type="text"
-                          placeholder="Portfolio title"
-                          required
-                        />
-                    </div>
-                    <div class="col-md-12">
-                        <input
-                          name="tags"
-                          class="contact-subject form-control"
-                          id="tags"
-                          type="text"
-                          placeholder="Portfolio Tags, separate with commas..."
-                          required
-                        />
-                    </div>
-                    <div class="col-md-12">
-                        <input
-                          name="demo"
-                          class="contact-subject form-control"
-                          id="demo"
-                          type="text"
-                          placeholder="Portfolio demo"
-                          required
-                        />
-                    </div>
-                    <div class="col-md-12">
-                        <textarea
-                        name="description"
-                        class="contact-message"
-                        id="description"
-                        rows="6"
-                        placeholder="Portfolio Description"
-                        required
-                        ></textarea>
-                    </div>
-                    <div class="col-md-12">
-                        <input
-                          name="imgurl"
-                          class="form-control-file mb-5"
-                          id="imgurl"
-                          type="file"
-                          placeholder="Portfolio imgurl"
-                          required
-                        />
-                    </div>
-                    <div class="btn-form col-sm-12">
-                      <button
-                        type="submit"
-                        class="btn btn-fill btn-block"
-                        id="form-portfolio"
-                      >
-                        Post
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
-
     <!--
     ==============
     * JS Files *
@@ -1167,15 +1008,9 @@
     <script src="assets/plugins/js/packery-mode.pkgd.js"></script>
     <script src="assets/js/custom-scripts.js"></script>
 
-    <script type="module">
+    <!-- <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js'
-      import {
-        getAuth,
-        onAuthStateChanged,
-        signOut,
-        signInWithEmailAndPassword
-      } from 'https://www.gstatic.com/firebasejs/9.0.1/firebase-auth.js'
 
       const firebaseConfig = {
         apiKey: 'AIzaSyAKuTk75jm060EkmkreMhO8I6q4Qz4Xke8',
@@ -1189,56 +1024,6 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig)
-      const auth = getAuth()
-      document.getElementById("mh-dashboard").style.display="none"
-      let currentUser = null
-
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log('Logged in!')
-            currentUser = JSON.parse(localStorage.getItem('user'))
-            document.getElementById("mh-dashboard").style.display="unset"
-        }
-      })
-
-      const signIn = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user
-            localStorage.setItem('user', JSON.stringify(user))
-            document.getElementById('login-form').reset()
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-
-      const logOut = () => {
-        signOut(auth)
-        .then(() => {
-            localStorage.clear()
-            document.location.reload()
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-      }
-
-      document
-        .getElementById('login-form')
-        .addEventListener('submit', function (e) {
-          e.preventDefault()
-
-          const formData = new FormData(e.target)
-          const formProps = Object.fromEntries(formData)
-          signIn(formProps.email, formProps.password)
-        })
-
-      document
-        .getElementById('btn-logout')
-        .addEventListener('click', function () {
-            logOut()
-        })
-    </script>
+    </script> -->
   </body>
 </html>

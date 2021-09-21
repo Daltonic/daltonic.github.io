@@ -323,12 +323,14 @@
         // });
         
         
-        
+        $('#year').text(new Date().getFullYear().toString());
     /*
     |=================
     | CONTACT FORM
     |=================
     */
+
+      $("#year").
         
       $("#contactForm").validator().on("submit", function (event) {
           if (event.isDefaultPrevented()) {
