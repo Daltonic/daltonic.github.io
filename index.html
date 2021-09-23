@@ -9,6 +9,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="google-site-verification" content="wGsIEe4wfS1t_qWHA2jYqqxrodq-YwblzRQFLNQdo68" />
     <!-- Information About Me -->
     <meta name="title" content="Darlington Gospel Portfolio" />
     <meta
@@ -76,6 +77,7 @@
     </script>
   </head>
   <body class="dark-vertion black-bg">
+    <div id="App">
     <!-- Start Loader -->
     <div class="section-loader">
       <div class="loader">
@@ -593,7 +595,7 @@
        PORTFOLIO
     ===================
     -->
-    <section class="mh-portfolio" id="mh-portfolio">
+    <!-- <section class="mh-portfolio" id="mh-portfolio">
       <div class="container">
         <div class="row section-separator">
           <div
@@ -659,10 +661,8 @@
             <div
               class="mh-project-gallery col-sm-12 wow fadeInUp"
               id="project-gallery"
-              data-wow-duration="0.8s"
-              data-wow-delay="0.5s"
             >
-              <div class="portfolioContainer row" id="projectsApp">
+              <div class="portfolioContainer row">
                 <div
                   v-for="project in projects"
                   :key="project.name"
@@ -678,9 +678,7 @@
                       <h5 class="title">
                         {{project.fields.title.stringValue}}
                       </h5>
-                      <span class="sub-title"
-                        >{{project.fields.views.integerValue}} Views</span
-                      >
+                      <span class="sub-title">Click to view</span>
                       <a data-fancybox data-src="#mh"></a>
                     </figcaption>
                   </figure>
@@ -690,13 +688,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="mh-portfolio-modal modal"
-        tabindex="-1"
-        ref="modal"
-        role="dialog"
-        id="mh"
-      >
+      <div class="mh-portfolio-modal modal" id="mh">
         <div class="container">
           <div class="row mh-portfolio-modal-inner">
             <div class="col-sm-5">
@@ -720,70 +712,38 @@
           </div>
         </div>
       </div>
-    </section>
-
+    </section> -->
+    
     <!--
     ===================
        BLOG
     ===================
     -->
-    <!-- <section class="mh-blog" id="mh-blog">
+    <section class="mh-blog" id="mh-blog">
         <div class="container">
             <div class="row section-separator">
                 <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
                     <h3>Featured Posts</h3>
                 </div>
-                <div class="col-sm-12 col-md-4">
+                <div v-for="blog in blogs" :key="blog.name" class="col-sm-12 col-md-4">
                      <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                        <img src="assets/images/b-3.png" alt="" class="img-fluid">
+                        <img :src="blog.fields.imgurl.stringValue" alt="" class="img-fluid">
                         <div class="blog-inner">
-                            <h2><a href="blog-single.html">A life without the daily traffic jams</a></h2>
+                            <h2><a href="javascript:void(0)">{{blog.fields.title.stringValue}}</a></h2>
                             <div class="mh-blog-post-info">
                                 <ul>
-                                    <li><strong>Post On</strong><a href="#">24.11.19</a></li>
-                                    <li><strong>By</strong><a href="#">ThemeSpiders</a></li>
+                                    <li><strong>Post On</strong><a href="javascript:void(0)">{{blog.createTime.split('T')[0]}}</a></li>
+                                    <li><strong>By</strong><a href="javascript:void(0)">{{blog.fields.author.stringValue}}</a></li>
                                 </ul>
                             </div>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
-                            <a href="blog-single.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                        <img src="assets/images/b-2.png" alt="" class="img-fluid">
-                        <div class="blog-inner">
-                            <h2><a href="blog-single.html">Proportion are what’s really needed</a></h2>
-                            <div class="mh-blog-post-info">
-                                <ul>
-                                    <li><strong>Post On</strong><a href="#">24.11.19</a></li>
-                                    <li><strong>By</strong><a href="#">ThemeSpiders</a></li>
-                                </ul>
-                            </div>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
-                            <a href="blog-single.html">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                        <img src="assets/images/b-1.png" alt="" class="img-fluid">
-                        <div class="blog-inner">
-                            <h2><a href="blog-single.html">Mounts of paper work to remember the way</a></h2>
-                            <div class="mh-blog-post-info">
-                                <ul>
-                                    <li><strong>Post On</strong><a href="#">24.11.19</a></li>
-                                    <li><strong>By</strong><a href="#">ThemeSpiders</a></li>
-                                </ul>
-                            </div>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
-                            <a href="blog-single.html">Read More</a>
+                            <p>{{truncateString(blog.fields.description.stringValue)}}</p>
+                            <a :href="blog.fields.blogurl.stringValue">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!--
     ===================
@@ -857,7 +817,7 @@
               </div>
             </div>
             <div
-              class="col-sm-12 col-md-6 wow fadeInUp"
+              class="col-sm-12 wow fadeInUp"
               data-wow-duration="0.8s"
               data-wow-delay="0.3s"
             >
@@ -911,23 +871,6 @@
                 </div>
               </form>
             </div>
-            <div
-              class="col-sm-12 col-md-6 wow fadeInUp"
-              data-wow-duration="0.8s"
-              data-wow-delay="0.5s"
-            >
-              <div class="mh-map">
-                <div id="mh-map" class="shadow-1">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083.39826943601!2d6.97315581956239!3d4.831335388634855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069ce45c20c1dbb%3A0xe76b4b6247db3089!2sShebbas%20oasis!5e0!3m2!1sen!2sng!4v1631103264061!5m2!1sen!2sng"
-                    width="600"
-                    height="450"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
             </div>
             <div
               class="col-sm-12 mh-copyright wow fadeInUp"
@@ -981,6 +924,8 @@
       </div>
     </footer>
 
+  </div>
+
     <!--
     ==============
     * JS Files *
@@ -1023,15 +968,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x"></script>
     <script>
       const app = new Vue({
-        el: '#projectsApp',
+        el: '#App',
         data: {
           title: 'Hello World',
           URL: 'https://firestore.googleapis.com/v1/',
           projects: [],
+          blogs: [],
           project: {},
         },
-        mounted() {
+        created() {
           this.getProjects()
+          this.getBlogs()
         },
         methods: {
           getProjects() {
@@ -1040,6 +987,13 @@
             )
               .then((res) => res.json())
               .then((data) => (this.projects = data.documents))
+          },
+          getBlogs() {
+            fetch(
+              `${this.URL}projects/portfolio-56269/databases/(default)/documents/blogs`
+            )
+              .then((res) => res.json())
+              .then((data) => (this.blogs = data.documents))
           },
           setProject(project) {
             $('#projectTitle').text(project.title.stringValue)
@@ -1054,6 +1008,13 @@
               $('#projectStacks').append(`<li><span>${stacks[key]}</span></li>`)
             }
           },
+          truncateString(str, num = 150) {
+            if (str.length > num) {
+              return str.slice(0, num) + "...";
+            } else {
+              return str;
+            }
+          }
         },
       })
     </script>
