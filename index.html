@@ -727,8 +727,8 @@
                 </div>
                 <div v-for="blog in blogs" :key="blog.name" class="col-sm-12 col-md-4">
                      <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                        <img :src="blog.fields.imgurl.stringValue" alt="" class="img-fluid">
-                        <div class="blog-inner">
+                        <img :src="blog.fields.imgurl.stringValue" :alt="blog.fields.title.stringValue" class="img-fluid">
+                        <div class="blog-inner text-left">
                             <h2><a href="javascript:void(0)">{{blog.fields.title.stringValue}}</a></h2>
                             <div class="mh-blog-post-info">
                                 <ul>
