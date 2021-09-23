@@ -595,7 +595,7 @@
        PORTFOLIO
     ===================
     -->
-    <!-- <section class="mh-portfolio" id="mh-portfolio">
+    <section class="mh-portfolio" id="mh-portfolio">
       <div class="container">
         <div class="row section-separator">
           <div
@@ -662,7 +662,7 @@
               class="mh-project-gallery col-sm-12 wow fadeInUp"
               id="project-gallery"
             >
-              <div class="portfolioContainer row">
+              <div class="row">
                 <div
                   v-for="project in projects"
                   :key="project.name"
@@ -712,7 +712,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
     
     <!--
     ===================
@@ -1009,11 +1009,7 @@
             }
           },
           truncateString(str, num = 150) {
-            if (str.length > num) {
-              return str.slice(0, num) + "...";
-            } else {
-              return str;
-            }
+            return str.length > num ? str.slice(0, num) + "..." : str;
           }
         },
       })
