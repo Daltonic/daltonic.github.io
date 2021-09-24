@@ -2682,4 +2682,17 @@ BLOG Pagination
   line-height: 30px;
   margin-bottom: 30px; }
 
+@-moz-keyframes spin {
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    to {transform:rotate(360deg);}
+}
+.spin {
+    animation: spin 1000ms linear infinite;
+}
+
 /*# sourceMappingURL=styles.css.map */

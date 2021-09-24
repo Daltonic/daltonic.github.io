@@ -595,7 +595,7 @@
        PORTFOLIO
     ===================
     -->
-    <section class="mh-portfolio" id="mh-portfolio">
+    <section v-if="loaded" class="mh-portfolio" id="mh-portfolio">
       <div class="container">
         <div class="row section-separator">
           <div
@@ -686,6 +686,17 @@
               </div>
             </div>
           </div>
+          <div class="d-flex col-sm-12 justify-content-center mx-auto mt-5">
+            <a
+                href="javascript:void(0)"
+                class="btn btn-fill wow fadeInUp"
+                data-wow-duration="0.8s"
+                data-wow-delay="0.4s"
+                id="loadMoreProjects"
+                @click="loadMoreProjects()"
+                >Load More
+            </a>
+          </div>
         </div>
       </div>
       <div class="mh-portfolio-modal modal" id="mh">
@@ -719,7 +730,7 @@
        BLOG
     ===================
     -->
-    <section class="mh-blog" id="mh-blog">
+    <section v-if="loaded" class="mh-blog" id="mh-blog">
         <div class="container">
             <div class="row section-separator">
                 <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
@@ -740,6 +751,16 @@
                             <a :href="blog.fields.blogurl.stringValue">Read More</a>
                         </div>
                     </div>
+                </div>
+                <div class="d-flex col-sm-12 justify-content-center mx-auto mt-5">
+                  <a
+                      href="javascript:void(0)"
+                      class="btn btn-fill wow fadeInUp"
+                      data-wow-duration="0.8s"
+                      data-wow-delay="0.4s"
+                      @click="loadMoreBlogs()"
+                      >Load More
+                  </a>
                 </div>
             </div>
         </div>
@@ -882,7 +903,7 @@
                   <div class="text-left text-xs-center">
                     <p>
                       <a href="templateshub.net"
-                        >With Love ❤️ &copy; 2016 - <span id="year"></span
+                        >With Love ❤️ Daltonic &copy; 2016 - <span id="year"></span
                       ></a>
                     </p>
                   </div>
@@ -973,8 +994,15 @@
           title: 'Hello World',
           URL: 'https://firestore.googleapis.com/v1/',
           projects: [],
+          projectStore: [],
           blogs: [],
+          blogStore: [],
           project: {},
+          projectStart: 0,
+          projectEnd: 3,
+          blogStart: 0,
+          blogEnd: 3,
+          loaded: false
         },
         created() {
           this.getProjects()
@@ -986,14 +1014,35 @@
               `${this.URL}projects/portfolio-56269/databases/(default)/documents/projects`
             )
               .then((res) => res.json())
-              .then((data) => (this.projects = data.documents))
+              .then((data) => {
+                this.projectStore = data.documents
+                this.projects.push(...this.projectStore.slice(this.projectStart, this.projectEnd))
+                this.projectStart = this.projectEnd
+                this.projectEnd *= 2
+              })
           },
           getBlogs() {
             fetch(
               `${this.URL}projects/portfolio-56269/databases/(default)/documents/blogs`
             )
               .then((res) => res.json())
-              .then((data) => (this.blogs = data.documents))
+              .then((data) => {
+                this.blogStore = data.documents
+                this.blogs.push(...this.blogStore.slice(this.blogStart, this.blogEnd))
+                this.blogStart = this.blogEnd
+                this.blogEnd *= 2
+                this.loaded = true
+              })
+          },
+          loadMoreProjects() {
+            this.projects.push(...this.projectStore.slice(this.projectStart, this.projectEnd))
+            this.projectStart = this.projectEnd
+            this.projectEnd *= 2
+          },
+          loadMoreBlogs() {
+            this.blogs.push(...this.blogStore.slice(this.blogStart, this.blogEnd))
+            this.blogStart = this.blogEnd
+            this.blogEnd *= 2
           },
           setProject(project) {
             $('#projectTitle').text(project.title.stringValue)
