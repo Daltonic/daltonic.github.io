@@ -136,9 +136,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#mh-portfolio">Portfolio</a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="#mh-blog">Blog</a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#mh-contact">Contact</a>
                 </li>
@@ -724,13 +724,13 @@
               <div class="mh-about-tag">
                 <ul id="projectStacks"></ul>
               </div>
-              <a id="projectDemo" hid="#" class="btn btn-fill">Live Demo</a>
+              <a id="projectDemo" href="#" target="_blank" class="btn btn-fill">Live Demo</a>
             </div>
             <div class="col-sm-7">
               <div class="mh-portfolio-modal-img">
-                <img id="projectImgurl" src="" alt="" class="img-fluid" />
+                <img id="projectImgurl" src="" alt="" class="img-fluid">
                 <p>
-                  <a id="projectRepo" class="text-primary" href="#"
+                  <a id="projectRepo" class="text-primary" href="#" target="_blank"
                     >Repository Link</a
                   >
                 </p>
@@ -764,7 +764,7 @@
                                 </ul>
                             </div>
                             <p>{{truncateString(blog.fields.description.stringValue)}}</p>
-                            <a :href="blog.fields.blogurl.stringValue">Read More</a>
+                            <a :href="blog.fields.blogurl.stringValue" target="_blank">Read More</a>
                         </div>
                     </div>
                 </div>
