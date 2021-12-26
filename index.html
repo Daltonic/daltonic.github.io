@@ -302,18 +302,18 @@
                 data-wow-duration="0.8s"
                 data-wow-delay="0.2s"
               >
-                Gospel Darlington is a remote Fullstack web developer, prolific
-                with technologies such as VueJs, Angular, ReactJs, and API
-                development. He takes a huge interest in the development of
-                high-grade and responsive web applications.
+                Gospel Darlington kick-started his journey as a software engineer in 2016.
+                Over the years, he has grown full-blown skills in
+                JavaScript stacks such as React,
+                ReactNative, VueJs, and more.
                 <br /><br />
-                Gospel Darlington currently works as a freelancer developing
-                apps and writing tutorials that teach other developers how to
-                integrate software products into their personal projects.
+                He is currently freelancing, building apps for clients,
+                and writing technical tutorials teaching
+                others how to do what he does.
                 <br /><br />
-                He spends his free time coaching young people on how to be
-                successful in life. His hobbies include inventing new recipes,
-                book writing, songwriting, and singing.
+                Gospel Darlington is open and available to hear from you.
+                You can reach him on LinkedIn, Facebook,
+                Github, or on his website.
               </p>
               <div
                 class="mh-about-tag wow fadeInUp"
@@ -321,12 +321,13 @@
                 data-wow-delay="0.3s"
               >
                 <ul>
-                  <li><span>html</span></li>
-                  <li><span>css</span></li>
+                  <li><span>HTML</span></li>
+                  <li><span>CSS</span></li>
                   <li><span>JavaScript</span></li>
-                  <li><span>php</span></li>
+                  <li><span>PHP</span></li>
                   <li><span>Wordpress</span></li>
-                  <li><span>React</span></li>
+                  <li><span>ReactJs</span></li>
+                  <li><span>ReactNative</span></li>
                   <li><span>VueJs</span></li>
                   <li><span>AngularJs</span></li>
                   <li><span>NextJs</span></li>
@@ -1029,7 +1030,9 @@
             )
               .then((res) => res.json())
               .then((data) => {
-                this.projectStore = data.documents
+                this.projectStore = data.documents.sort(function(x, y){
+                    return new Date(y.createTime).getTime() - new Date(x.createTime).getTime();
+                })
                 this.projects.push(...this.projectStore.slice(this.projectStart, this.projectEnd))
                 this.projectStart = this.projectEnd
                 this.projectEnd *= 2
@@ -1041,7 +1044,9 @@
             )
               .then((res) => res.json())
               .then((data) => {
-                this.blogStore = data.documents
+                this.blogStore = data.documents.sort(function(x, y){
+                    return new Date(y.createTime).getTime() - new Date(x.createTime).getTime();
+                })
                 this.blogs.push(...this.blogStore.slice(this.blogStart, this.blogEnd))
                 this.blogStart = this.blogEnd
                 this.blogEnd *= 2
