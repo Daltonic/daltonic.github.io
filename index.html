@@ -142,6 +142,9 @@
                 <li v-if="loaded" class="nav-item">
                     <a class="nav-link" href="#mh-blog">Blog</a>
                 </li>
+                <li v-if="loaded" class="nav-item">
+                    <a class="nav-link" href="#mh-mention">Mention</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#mh-contact">Contact</a>
                 </li>
@@ -829,7 +832,35 @@
         </div>
     </section>
 
-
+    <!--
+    ===================
+       MENTIONS
+    ===================
+    -->
+    <section v-if="loaded" class="mh-blog" id="mh-mention">
+      <div class="container">
+          <div class="row section-separator">
+              <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                  <h3>Mentions & Recognitions</h3>
+              </div>
+              <div v-for="mention in mentions" :key="mention.name" class="col-sm-12 col-md-4">
+                   <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                      <img :src="mention.fields.imgurl.stringValue" :alt="mention.fields.title.stringValue" class="img-fluid">
+                  </div>
+              </div>
+              <div class="d-flex col-sm-12 justify-content-center mx-auto mt-5">
+                <a
+                    href="javascript:void(0)"
+                    class="btn btn-fill wow fadeInUp"
+                    data-wow-duration="0.8s"
+                    data-wow-delay="0.4s"
+                    @click="loadMoreMentions()"
+                    >Load More
+                </a>
+              </div>
+          </div>
+      </div>
+  </section>
 
     <!--
     ===================
@@ -1059,6 +1090,7 @@
           title: 'Hello World',
           URL: 'https://firestore.googleapis.com/v1/',
           projects: [],
+          mentions: [],
           projectStore: [],
           blogs: [],
           blogStore: [],
@@ -1067,11 +1099,14 @@
           projectEnd: 6,
           blogStart: 0,
           blogEnd: 6,
+          mentionStart: 0,
+          mentionEnd: 6,
           loaded: false
         },
         created() {
           this.getProjects()
           this.getBlogs()
+          this.getMentions()
         },
         methods: {
           getProjects() {
@@ -1088,6 +1123,7 @@
                 this.projectEnd *= 2
               })
           },
+          
           getBlogs() {
             fetch(
               `${this.URL}projects/portfolio-56269/databases/(default)/documents/blogs`
@@ -1103,16 +1139,41 @@
                 this.loaded = true
               })
           },
+          
+          getMentions() {
+            fetch(
+              `${this.URL}projects/portfolio-56269/databases/(default)/documents/mentions`
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                this.mentionStore = data.documents.sort(function(x, y){
+                    return new Date(y.createTime).getTime() - new Date(x.createTime).getTime();
+                })
+                this.mentions.push(...this.mentionStore.slice(this.mentionStart, this.mentionEnd))
+                this.mentionStart = this.mentionEnd
+                this.mentionEnd *= 2
+                this.loaded = true
+              })
+          },
+          
           loadMoreProjects() {
             this.projects.push(...this.projectStore.slice(this.projectStart, this.projectEnd))
             this.projectStart = this.projectEnd
             this.projectEnd *= 2
           },
+          
           loadMoreBlogs() {
             this.blogs.push(...this.blogStore.slice(this.blogStart, this.blogEnd))
             this.blogStart = this.blogEnd
             this.blogEnd *= 2
           },
+
+          loadMoreMentions() {
+            this.mentions.push(...this.mentionStore.slice(this.mentionStart, this.mentionEnd))
+            this.mentionStart = this.mentionEnd
+            this.mentionEnd *= 2
+          },
+          
           setProject(project) {
             $('#projectTitle').text(project.title.stringValue)
             $('#projectDesc').text(project.description.stringValue)
