@@ -301,7 +301,9 @@ a {
   .btn.right-icon .icon {
     margin-left: 15px; }
   .btn.btn-border {
-    background-color: transparent; }
+    background-color: transparent;
+    border: 2px solid #0bceaf;
+    color: #0bceaf; }
   .btn.white-btn-border {
     background-color: transparent;
     border-color: #fff; }
