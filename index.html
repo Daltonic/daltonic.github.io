@@ -42,39 +42,6 @@
     <!-- Custom CSS-->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      ;(function () {
-        emailjs.init('user_mRAxbZUG3lHfbhr2tRbCh')
-      })()
-    </script>
-    <script type="text/javascript">
-      window.onload = function () {
-        document
-          .getElementById('contact-form')
-          .addEventListener('submit', function (event) {
-            event.preventDefault()
-
-            emailjs
-              .sendForm('service_zcuu31j', 'template_wehm4v8', '#contact-form')
-              .then(
-                function (response) {
-                  console.log('SUCCESS!', response.status, response.text)
-                  alert('Email successfully submitted!')
-                  document.getElementById('contact-form').reset()
-                },
-                function (error) {
-                  console.log('FAILED...', error)
-                  alert('Oops... ' + JSON.stringify(error))
-                }
-              )
-          })
-      }
-    </script>
   </head>
   <body class="dark-vertion black-bg">
     <div id="App">
@@ -249,12 +216,12 @@
                   </li>
                 </ul>
                 <a
-                href="https://api.whatsapp.com/send/?phone=2348106056545&app_absent=0"
+                href="#"
                 target="_blank"
                 class="btn btn-fill wow fadeInUp mt-3"
                 data-wow-duration="0.8s"
                 data-wow-delay="0.4s"
-                >Chat Me Up
+                >Tutor Me
               </a>
               <a
                   href="mailto:darlingtongospel@gmail.com?body=Hi Daltonic, I was browsing your website and wanted to connect.&subject=Partnership Proposal"
@@ -391,7 +358,7 @@
                         <i class="fa fa-user-graduate sky-color"></i>
                         <h3>Code Instructorship</h3>
                         <p>
-                          Do you want to learn coding in a group mentorship session? I will privately coach you from a complete beginner to a master at a flexible schedule.
+                          Do you want to learn coding in a one-on-one mentorship session? I will privately coach you from a complete beginner to a master at a flexible schedule.
                         </p>
                     </div>
                 </div>
@@ -403,7 +370,7 @@
                 class="btn btn-fill wow fadeInUp mt-3"
                 data-wow-duration="0.8s"
                 data-wow-delay="0.4s"
-                >Mentor Me</a>
+                >Tutor Me</a>
             </div>
         </div>
      </section>   
@@ -844,6 +811,8 @@
             </div>
         </div>
     </section>
+
+    
 
     <!--
     ===================
