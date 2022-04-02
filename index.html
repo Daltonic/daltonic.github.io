@@ -54,13 +54,24 @@
     </div>
     <!-- End Loader -->
 
-    <div v-if="hasQuery" class="d-flex justify-content-between align-items-center alert alert-success" role="alert">
+    <div v-if="queryString.includes('status=success')" class="d-flex justify-content-between align-items-center alert alert-success" role="alert">
       <span class="text-success">
         <strong>Fantastic!</strong> Your payment was successful, send me an email let's schedule a class.
       </span>
       <span>
         <a href="#" aria-label="Close">
           <span class="text-success">&times;</span>
+        </a>
+      </span>
+    </div>
+    
+    <div v-if="queryString.includes('status=cancelled')" class="d-flex justify-content-between align-items-center alert alert-danger" role="alert">
+      <span class="text-danger">
+        <strong>Opps!</strong> Are you having troubles with the payment?, please try again or email me!
+      </span>
+      <span>
+        <a href="#" aria-label="Close">
+          <span class="text-danger">&times;</span>
         </a>
       </span>
     </div>
@@ -841,7 +852,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="mh-pricing dark-bg shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                             <i class="fa fa-calendar"></i>
-                            <h4>Basic Classes</h4>
+                            <h4>Beginner Classes</h4>
                             <p>What you'll learn:</p>
                             <h5>$25 per hour</h5>
                             <ul>
@@ -1078,14 +1089,14 @@
           mentionStart: 0,
           mentionEnd: 6,
           loaded: false,
-          hasQuery: false,
+          queryString: false,
         },
         created() {
           this.getProjects()
           this.getBlogs()
           this.getMentions()
 
-          if(window.location.href.includes('status=success')) this.hasQuery = true
+          this.queryString = window.location.href
         },
         methods: {
           getProjects() {
