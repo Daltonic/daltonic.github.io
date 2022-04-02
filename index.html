@@ -54,6 +54,17 @@
     </div>
     <!-- End Loader -->
 
+    <div v-if="hasQuery" class="d-flex justify-content-between align-items-center alert alert-success" role="alert">
+      <span class="text-success">
+        <strong>Fantastic!</strong> Your payment was successful, send me an email let's schedule a class.
+      </span>
+      <span>
+        <a href="#" aria-label="Close">
+          <span class="text-success">&times;</span>
+        </a>
+      </span>
+    </div>
+
     <!--
     ===================
        NAVIGATION
@@ -108,6 +119,9 @@
                 </li>
                 <li v-if="loaded" class="nav-item">
                     <a class="nav-link" href="#mh-blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#mh-pricing">Pricing</a>
                 </li>
                 <li v-if="loaded" class="nav-item">
                     <a class="nav-link" href="#mh-mention">Mention</a>
@@ -216,8 +230,7 @@
                   </li>
                 </ul>
                 <a
-                href="#"
-                target="_blank"
+                href="#mh-pricing"
                 class="btn btn-fill wow fadeInUp mt-3"
                 data-wow-duration="0.8s"
                 data-wow-delay="0.4s"
@@ -282,7 +295,7 @@
                 Gospel Darlington kick-started his journey as a software engineer in 2016.
                 Over the years, he has grown full-blown skills in
                 JavaScript stacks such as React,
-                ReactNative, VueJs, and now blockchain.
+                ReactNative, VueJs, and now <span class="mh-eduyear">blockchain.</span>
                 <br /><br />
                 He is currently freelancing, building apps for clients,
                 and writing technical tutorials teaching
@@ -476,16 +489,16 @@
                 <li>
                   <div
                     class="mh-progress mh-progress-circle"
-                    data-progress="90"
+                    data-progress="85"
                   ></div>
                   <div class="pr-skill-name">Communication</div>
                 </li>
                 <li>
                   <div
                     class="mh-progress mh-progress-circle"
-                    data-progress="85"
+                    data-progress="90"
                   ></div>
-                  <div class="pr-skill-name">Team Work</div>
+                  <div class="pr-skill-name">Mentorship</div>
                 </li>
                 <li>
                   <div
@@ -745,6 +758,7 @@
           </div>
         </div>
       </div>
+
       <div class="mh-portfolio-modal modal" id="mh">
         <div class="container">
           <div class="row mh-portfolio-modal-inner">
@@ -812,7 +826,68 @@
         </div>
     </section>
 
-    
+    <!--
+    ===================
+        PRICING
+    ===================
+    -->
+    <section class="mh-pricing" id="mh-pricing">
+        <div class="">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-12 section-title" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <h3>Pricing Table</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="mh-pricing dark-bg shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                            <i class="fa fa-calendar"></i>
+                            <h4>Basic Classes</h4>
+                            <p>What you'll learn:</p>
+                            <h5>$25 per hour</h5>
+                            <ul>
+                                <li>Solidity Basics</li>
+                                <li>Smart Contract Development</li>
+                                <li>Smart Contract Tests</li>
+                                <li>Smart Contracts Scripts</li>
+                            </ul>
+                            <a href="#contactForm" class="btn btn-fill">Book Class</a>
+                        </div>  
+                    </div>                    
+                    <div class="col-sm-12 col-md-4">
+                        <div class="mh-pricing dark-bg shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                            <i class="fa fa-file"></i>
+                            <h4>Intermediate Classes</h4>
+                            <p>What you'll learn:</p>
+                            <h5>$47 per hour</h5>
+                            <ul>
+                                <li>Smart Contract with Solidity</li>
+                                <li>DApp Development with React</li>
+                                <li>Testing and Scripting</li>
+                                <li>Mentorship Tips</li>
+                            </ul>
+                            <a href="#contactForm" class="btn btn-fill">Book Class</a>
+                        </div>  
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="mh-pricing dark-bg shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                            <i class="fa fa-hourglass"></i>
+                            <h4>Project Development</h4>
+                            <p>I am open for any other business:</p>
+                            <h5>Negotiation</h5>
+                            <ul>
+                                <li>Build me a Smart Contract</li>
+                                <li>Build me a DApp</li>
+                                <li>Write me a Technical article</li>
+                                <li>Hire me for your brand</li>
+                            </ul>
+                            <a href="mailto:darlingtongospel@gmail.com?body=Hi Daltonic, I was browsing your website and wanted to connect.&subject=Partnership Proposal"
+                            target="_blank" class="btn btn-fill">Hire Me</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--
     ===================
@@ -842,7 +917,7 @@
               </div>
           </div>
       </div>
-  </section>
+    </section>
 
     <!--
     ===================
@@ -852,8 +927,46 @@
     <footer class="mh-footer" id="mh-contact">
       <div class="map-image image-bg">
         <div class="container">
+          <div class="col-md-6 mx-auto wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+            <form method="POST"
+              action="https://checkout.flutterwave.com/v3/hosted/pay"
+              id="contactForm" class="single-form quate-form wow fadeInUp">
+                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                <div class="row">
+                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                      <h3>Make Payment</h3>
+                      <p>After making payment, email me for scheduling our lessons.</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <input name="customer[name]" class="contact-name form-control" id="name" type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-sm-12">
+                        <input name="customer[email]" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-sm-12">
+                      <select name="amount" id="amount" class="contact-subject form-control" placeholder="Select Plan" Place required>
+                        <option value="" selected disabled hidden>Choose a class</option>
+                        <option style="color: black;" value="25">Beginner class</option>
+                        <option style="color: black;" value="47">Intermediate class</option>
+                      </select>
+                    </div>
+                    <input type="hidden" name="public_key" value="FLWPUBK-d24d68d5069fab189f99553783986392-X" />
+                    <input type="hidden" name="tx_ref" value="daltonictx-019203" />
+                    <input type="hidden" name="currency" value="USD" />
+                    <input type="hidden" name="meta[token]" value="54" />
+                    <input type="hidden" name="redirect_url" value="https://daltonic.github.io/" />
+                    <input type="hidden" name="customizations[title]" value="Daltonic Tutoring Classes" />
+                    <input type="hidden" name="customizations[description]" value="Dayment for an online class session" />
+                    <input type="hidden" name="customizations[logo]" value="https://daltonic.github.io/assets/images/hero.jpg" />
+                    <!-- Subject Button -->
+                    <div class="btn-form col-sm-12">
+                        <button type="submit" id="start-payment-button" class="btn btn-fill btn-block">Pay Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
             <div
-              class="col-sm-12 mh-copyright wow fadeInUp"
+              class="col-sm-12 mx-auto mh-copyright wow fadeInUp"
               data-wow-duration="0.8s"
               data-wow-delay="0.3s"
             >
@@ -964,12 +1077,15 @@
           blogEnd: 6,
           mentionStart: 0,
           mentionEnd: 6,
-          loaded: false
+          loaded: false,
+          hasQuery: false,
         },
         created() {
           this.getProjects()
           this.getBlogs()
           this.getMentions()
+
+          if(window.location.href.includes('status=success')) this.hasQuery = true
         },
         methods: {
           getProjects() {

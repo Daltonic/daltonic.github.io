@@ -2697,4 +2697,7 @@ BLOG Pagination
     animation: spin 1000ms linear infinite;
 }
 
+select.form-control:not([size]):not([multiple]) {
+  height: calc(4.25rem + 2px);
+}
 /*# sourceMappingURL=styles.css.map */
