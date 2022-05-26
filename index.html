@@ -126,7 +126,7 @@
                   <a class="nav-link" href="#mh-experience">Experiences</a>
                 </li>
                 <li v-if="loaded" class="nav-item">
-                  <a class="nav-link" href="#mh-portfolio">Portfolio</a>
+                  <a class="nav-link" href="#mh-portfolio">Projects</a>
                 </li>
                 <li v-if="loaded" class="nav-item">
                     <a class="nav-link" href="#mh-blog">Blog</a>
@@ -387,14 +387,20 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
+            <div class="d-flex justify-content-center">
             	<a
                 href="mailto:darlingtongospel@gmail.com?body=Hi Daltonic, I was browsing your website and wanted to connect.&subject=Partnership Proposal"
                 target="_blank"
                 class="btn btn-fill wow fadeInUp mt-3"
                 data-wow-duration="0.8s"
                 data-wow-delay="0.4s"
-                >Tutor Me</a>
+                >Hire Me</a>
+              <a
+                href="#mh-pricing"
+                class="btn btn-border wow fadeInUp mt-3 ml-3"
+                data-wow-duration="0.8s"
+                data-wow-delay="0.4s"
+                >Schedule Class</a>
             </div>
         </div>
      </section>   
@@ -900,7 +906,7 @@
                             <i class="fa fa-hourglass"></i>
                             <h4>Project Development</h4>
                             <p>I am open for any other business:</p>
-                            <h5>Negotiation</h5>
+                            <h5>$ Partnership</h5>
                             <ul>
                                 <li>Build me a Smart Contract</li>
                                 <li>Build me a DApp</li>
@@ -962,7 +968,7 @@
                 <div class="row">
                     <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
                       <h3>Make Payment</h3>
-                      <p>After making payment, email me for scheduling our lessons.</p>
+                      <p>After making payment, schedule a class with me on calendarly.</p>
                     </div>
                     <div class="col-sm-12">
                         <input name="customer[name]" class="contact-name form-control" id="name" type="text" placeholder="Full Name" required>
@@ -986,8 +992,15 @@
                     <input type="hidden" name="customizations[description]" value="Dayment for an online class session" />
                     <input type="hidden" name="customizations[logo]" value="https://daltonic.github.io/assets/images/hero.jpg" />
                     <!-- Subject Button -->
-                    <div class="btn-form col-sm-12">
-                        <button type="submit" id="start-payment-button" class="btn btn-fill btn-block">Pay Now</button>
+                    <div class="d-flex justify-content-between btn-form col-sm-12">
+                        <button type="submit" id="start-payment-button" class="btn btn-fill">Pay Now</button>
+                        <a
+                          href="https://calendly.com/darlingtongospel/60min"
+                          target="_blank"
+                          class="btn btn-border wow fadeInUp mt-3 ml-3"
+                          data-wow-duration="0.8s"
+                          data-wow-delay="0.4s"
+                          >Schedule Class</a>
                     </div>
                 </div>
             </form>
